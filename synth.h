@@ -67,7 +67,7 @@ static int memfd_create(const char *name, unsigned int flags) {
 }
 
 // initialize libpd and load a patch
-static int setup_pd(char *patch_path) {
+static int setup_pd(char *fname, char *dir) {
 
     if (libpd_init() != 0) {
         return 1;
@@ -76,7 +76,7 @@ static int setup_pd(char *patch_path) {
     libpd_init_audio(0, 2, 48000);
 
     // parameters should be (file, dir) but this seems to work
-    void *patch = libpd_openfile(patch_path, ".");
+    void *patch = libpd_openfile(fname, dir);
     if (!patch) {
         return 2;
     }
@@ -114,12 +114,10 @@ public:
             return k_unit_err_undef;
         }
 
-        // make a temporary path
-        char path[64];
-        snprintf(path, sizeof(path), "/proc/self/fd/%d", fd);
-
-        // init libpd and load a patch from the path
-        setup_pd(path);
+        // init libpd and load the patch
+        char fname[64];
+        snprintf(fname, sizeof(fname), "%d", fd);
+        setup_pd(fname, "/proc/self/fd/");
 
         close(fd); // unlink is not needed; memfd is released when it is closed
 
