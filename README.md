@@ -1,4 +1,4 @@
-# libpd_drumlogue_test
+# libpd_drumlogue_test_synth
 
 Run a pure-data patch on drumlogue
 
