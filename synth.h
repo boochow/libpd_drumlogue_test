@@ -117,7 +117,7 @@ public:
         // init libpd and load the patch
         char fname[64];
         snprintf(fname, sizeof(fname), "%d", fd);
-        setup_pd(fname, "/proc/self/fd/");
+        setup_pd(fname, "/proc/self/fd");
 
         close(fd); // unlink is not needed; memfd is released when it is closed
 
