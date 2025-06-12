@@ -12,4 +12,4 @@ make install
 
 ## Pure Data patch
 
-The pure-data patch is included as a string named `patch_str` in `synth.h`.
+The pure-data patch `simple_midi_synth.pd` is already included as a string named `patch_str` in `synth.h`.
