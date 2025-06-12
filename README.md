@@ -1,6 +1,6 @@
 # libpd_drumlogue_test_synth
 
-Run a pure-data patch on drumlogue
+Run a pure-data patch as a synth unit on drumlogue
 
 ## How to build
 
